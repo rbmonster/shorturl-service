@@ -1,0 +1,30 @@
+
+spring:
+  application:
+    name: test
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:sw-shorturl
+    username: root
+    password: test
+    flyway:
+      enabled: false
+      schemas: UNIT-TEST
+      baseline-on-migrate: true
+      locations:
+        - classpath:ddl
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      schema-locations: classpath:ddl/V1.1__init.sql
+      mode: ALWAYS
+      continue-on-error: true
+      username: root
+      password: test
+      platform: h2
+#      data-locations: classpath:ddl/V1.1__init.sql
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
